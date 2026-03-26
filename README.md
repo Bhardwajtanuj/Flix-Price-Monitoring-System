@@ -1,4 +1,5 @@
-# 🚍✨ FlixBus Pricing Intelligence Engine  
+# 🚍✨ FlixBus Pricing Intelligence Engine
+
 ### *Turning Raw Transport Data into Strategic Pricing Decisions*
 
 ---
@@ -17,11 +18,11 @@ This project builds a **Pricing Intelligence Engine** that evaluates whether Fli
 
 FlixBus operates across thousands of routes where:
 
-- Competitor prices fluctuate constantly  
-- Demand varies by time, route, and service quality  
-- Static pricing leads to **revenue leakage** or **customer drop-offs**
+* Competitor prices fluctuate constantly
+* Demand varies by time, route, and service quality
+* Static pricing leads to **revenue leakage** or **customer drop-offs**
 
-👉 The challenge:  
+👉 The challenge:
 **How do we determine if a price is fair, overpriced, or underpriced?**
 
 ---
@@ -45,10 +46,11 @@ We engineered a pipeline that:
 Not all buses are equal — we compare only *relevant competitors*.
 
 **Matching Logic:**
-- 🚌 Bus Type → AC / Sleeper / Seater
-- ⏱ Duration → ±60 minutes
-- 🕒 Departure Time → ±90 minutes (circular logic)
-- ⭐ Ratings → ±0.8
+
+* 🚌 Bus Type → AC / Sleeper / Seater
+* ⏱ Duration → ±60 minutes
+* 🕒 Departure Time → ±90 minutes (circular logic)
+* ⭐ Ratings → ±0.8
 
 > 🎯 Ensures apples-to-apples comparison
 
@@ -60,11 +62,11 @@ We avoid naive averages.
 
 Instead, we compute:
 
-- **Weighted Average Price (WAP)**
-- **Occupancy-weighted Median**
+* **Weighted Average Price (WAP)**
+* **Occupancy-weighted Median**
 
 💡 Why?
-- High occupancy = high demand = stronger influence
+High occupancy = high demand = stronger influence
 
 ---
 
@@ -73,10 +75,10 @@ Instead, we compute:
 Markets behave differently.
 
 | Market Behavior | Threshold |
-|----------------|----------|
-| Stable         | ±10%     |
-| Moderate       | ±15%     |
-| Volatile       | ±20%     |
+| --------------- | --------- |
+| Stable          | ±10%      |
+| Moderate        | ±15%      |
+| Volatile        | ±20%      |
 
 Each FlixBus price is evaluated relative to its market volatility.
 
@@ -88,11 +90,11 @@ Pricing isn't just about distance — it's about **experience**.
 
 We adjust benchmarks based on:
 
-- 📡 Live Tracking  
-- 🎫 M-Ticket  
-- 🪑 Seat Layout  
+* 📡 Live Tracking
+* 🎫 M-Ticket
+* 🪑 Seat Layout
 
-**Adjustment Rule:**  
+**Adjustment Rule:**
 `±2% per feature difference`
 
 ---
@@ -101,9 +103,9 @@ We adjust benchmarks based on:
 
 Each trip is classified as:
 
-- ✅ **Fair Price**
-- 🔴 **Overpriced**
-- 🟡 **Underpriced**
+* ✅ **Fair Price**
+* 🔴 **Overpriced**
+* 🟡 **Underpriced**
 
 ---
 
@@ -119,49 +121,79 @@ flowchart TD
     F --> G[Dynamic Thresholding]
     G --> H[Flagging System]
     H --> I[Excel Dashboard Output]
-🛠️ Tech Stack
-Layer	Tools
-🧪 Data Processing	pandas, numpy
-⚙️ Logic Engine	Python
-📊 Reporting	openpyxl
-🧠 Feature Engineering	Regex + Custom Pipelines
-📦 Output: Excel Intelligence Dashboard
+```
 
-A fully automated multi-sheet report:
+---
 
-Sheet	Purpose
-🏠 Cover	Overview & dataset summary
-📊 Summary	KPIs & aggregated insights
-🚨 Flagging Output	Trip-level decisions
-🧠 Logic & Flow	Methodology
-🗺 Route Insights	Best & worst routes
-📂 Raw Data	Processed dataset
-📈 Key Metrics Generated
-Total Routes Analyzed
-Total Flix Trips
-Flagged Trip %
-Overpricing vs Underpricing Ratio
-Route-Level Performance
-💡 Insights You Can Extract
+## 🛠️ Tech Stack
+
+| Layer                  | Tools                    |
+| ---------------------- | ------------------------ |
+| 🧪 Data Processing     | pandas, numpy            |
+| ⚙️ Logic Engine        | Python                   |
+| 📊 Reporting           | openpyxl                 |
+| 🧠 Feature Engineering | Regex + Custom Pipelines |
+
+---
+
+## 📦 Output: Excel Intelligence Dashboard
+
+A fully automated **multi-sheet report**:
+
+| Sheet              | Purpose                    |
+| ------------------ | -------------------------- |
+| 🏠 Cover           | Overview & dataset summary |
+| 📊 Summary         | KPIs & aggregated insights |
+| 🚨 Flagging Output | Trip-level decisions       |
+| 🧠 Logic & Flow    | Methodology                |
+| 🗺 Route Insights  | Best & worst routes        |
+| 📂 Raw Data        | Processed dataset          |
+
+---
+
+## 📈 Key Metrics Generated
+
+* Total Routes Analyzed
+* Total Flix Trips
+* Flagged Trip %
+* Overpricing vs Underpricing Ratio
+* Route-Level Performance
+
+---
+
+## 💡 Insights You Can Extract
 
 ✔ Identify routes where FlixBus is consistently overpriced
-✔ Detect underpricing → lost revenue opportunities
+✔ Detect underpricing → **lost revenue opportunities**
 ✔ Understand impact of features on pricing power
 ✔ Benchmark against real competitor demand
 
-⚡ Performance Highlights
-Handles 800,000+ rows
-Optimized using:
-Vectorized operations
-Smart filtering
-Bucket-based comparisons
-🔮 Future Scope
-🤖 ML-based anomaly detection (Isolation Forest, Z-score)
-📡 Real-time pricing API integration
-🌐 Interactive dashboard (Streamlit / Next.js)
-⚡ Parallel processing for scale
-📊 Graph-based route intelligence
-📁 Project Structure
+---
+
+## ⚡ Performance Highlights
+
+* Handles **800,000+ rows**
+* Optimized using:
+
+  * Vectorized operations
+  * Smart filtering
+  * Bucket-based comparisons
+
+---
+
+## 🔮 Future Scope
+
+* 🤖 ML-based anomaly detection (Isolation Forest, Z-score)
+* 📡 Real-time pricing API integration
+* 🌐 Interactive dashboard (Streamlit / Next.js)
+* ⚡ Parallel processing for scale
+* 📊 Graph-based route intelligence
+
+---
+
+## 📁 Project Structure
+
+```
 Flix-Pricing-Engine/
 │
 ├── 📂 dataset/
@@ -173,8 +205,20 @@ Flix-Pricing-Engine/
 │   └── pricing_dashboard.xlsx
 │
 └── 📘 README.md
-🎯 Real-World Applications
-🚍 Transport Companies
-💰 Revenue Strategy Teams
-📊 Data Analysts
-🧠 Pricing Intelligence Platforms
+```
+
+---
+
+## 🎯 Real-World Applications
+
+* 🚍 Transport Companies
+* 💰 Revenue Strategy Teams
+* 📊 Data Analysts
+* 🧠 Pricing Intelligence Platforms
+
+---
+
+
+
+> 🚀 Built to answer one simple question:
+> **“Is this price right?”**
